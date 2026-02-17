@@ -3,1303 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukrati Gautam | AI Safety Researcher</title>
+    <title>Sukrati Gautam</title>
     <meta name="description" content="Sukrati Gautam - PhD Candidate at Purdue University researching AI Alignment, Agentic Safety, and Behavioral Evaluation of LLMs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #FAFAF9;
-            --bg-card: #FFFFFF;
-            --text: #1C1917;
-            --text-secondary: #57534E;
-            --accent: #6D28D9;
-            --accent-light: #8B5CF6;
-            --accent-subtle: #F5F3FF;
-            --border: #E7E5E4;
-            --gradient-start: #6D28D9;
-            --gradient-end: #2563EB;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 32px rgba(0,0,0,0.1);
-            --radius: 12px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg: #ffffff;
+            --text: #222222;
+            --text-light: #555555;
+            --link: #0066cc;
+            --border: #ddd;
+            --tag-bg: #f0f0f0;
         }
 
         [data-theme="dark"] {
-            --bg: #0C0A09;
-            --bg-card: #1C1917;
-            --text: #FAFAF9;
-            --text-secondary: #A8A29E;
-            --accent: #8B5CF6;
-            --accent-light: #A78BFA;
-            --accent-subtle: #1E1433;
-            --border: #292524;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
-            --shadow-lg: 0 12px 32px rgba(0,0,0,0.4);
+            --bg: #111111;
+            --text: #e0e0e0;
+            --text-light: #999999;
+            --link: #6cb4ee;
+            --border: #333;
+            --tag-bg: #222;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
-            transition: background var(--transition), color var(--transition);
+            line-height: 1.65;
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* ---- Navigation ---- */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(250,250,249,0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            transition: background var(--transition), border var(--transition);
-        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        [data-theme="dark"] nav {
-            background: rgba(12,10,9,0.85);
-        }
-
-        .nav-inner {
-            max-width: 1100px;
+        .container {
+            max-width: 820px;
             margin: 0 auto;
-            padding: 0 2rem;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 2.5rem 1.5rem;
         }
 
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--text);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: 0.5rem 0.85rem;
-            border-radius: 8px;
-            transition: color var(--transition), background var(--transition);
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent);
-            background: var(--accent-subtle);
-        }
-
+        /* Theme toggle */
         .theme-toggle {
-            background: none;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--tag-bg);
             border: 1px solid var(--border);
-            color: var(--text-secondary);
+            color: var(--text-light);
             cursor: pointer;
-            padding: 0.45rem;
-            border-radius: 8px;
+            padding: 0.4rem;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition);
-            margin-left: 0.5rem;
+            z-index: 10;
         }
 
-        .theme-toggle:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
+        .theme-toggle:hover { color: var(--link); border-color: var(--link); }
+        .theme-toggle svg { width: 16px; height: 16px; }
 
-        .theme-toggle svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* ---- Hero ---- */
-        .hero {
-            min-height: 100vh;
+        /* Header */
+        .header {
             display: flex;
-            align-items: center;
-            padding: 6rem 2rem 4rem;
-        }
-
-        .hero-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 600;
-            line-height: 1.15;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-text h1 .gradient-text {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            gap: 2rem;
+            align-items: flex-start;
             margin-bottom: 1.5rem;
-            font-weight: 400;
         }
 
-        .hero-narrative {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 540px;
+        .header-text { flex: 1; }
+
+        .header-text h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
         }
 
-        .hero-narrative strong {
-            color: var(--text);
-            font-weight: 600;
+        .header-text .affiliation {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
         }
 
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-tags span {
-            background: var(--accent-subtle);
-            color: var(--accent);
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.5rem;
-            border-radius: 8px;
+        .header-text .email {
             font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            font-size: 0.85rem;
             font-weight: 500;
-            text-decoration: none;
-            transition: all var(--transition);
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(109,40,217,0.3);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 4px 16px rgba(109,40,217,0.4);
-            transform: translateY(-1px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
+            padding: 0.3rem 0.6rem;
             border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            transition: border-color 0.2s, color 0.2s;
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        .social-links a:hover {
+            border-color: var(--link);
+            color: var(--link);
+            text-decoration: none;
         }
 
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-avatar-wrapper {
-            position: relative;
-            width: 340px;
-            height: 340px;
-        }
-
-        .hero-avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
+        .headshot {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .hero-avatar img {
+        .headshot img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center top;
         }
 
-        .hero-avatar-ring {
-            position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            border: 2px dashed var(--accent-light);
-            opacity: 0.3;
-            animation: spin 30s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .floating-badge {
-            position: absolute;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 0.6rem 1rem;
-            box-shadow: var(--shadow-md);
-            font-size: 0.8rem;
-            font-weight: 500;
-            z-index: 2;
-            white-space: nowrap;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-badge:nth-child(3) { top: 10%; right: -10%; animation-delay: -2s; }
-        .floating-badge:nth-child(4) { bottom: 15%; left: -15%; animation-delay: -4s; }
-        .floating-badge:nth-child(5) { bottom: 5%; right: -5%; animation-delay: -1s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ---- Section base ---- */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            max-width: 640px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        /* ---- Journey / About ---- */
-        #about {
-            background: var(--bg);
-        }
-
-        .journey-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .journey-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            transition: all var(--transition);
-        }
-
-        .journey-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .journey-card .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: var(--accent-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.2rem;
-        }
-
-        .journey-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .journey-card p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
-
-        /* ---- Research ---- */
-        #research {
-            background: var(--bg-card);
-        }
-
-        [data-theme="dark"] #research {
-            background: var(--bg-card);
-        }
-
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .research-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            transition: all var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-
-        .research-card:hover::before {
-            opacity: 1;
-        }
-
-        .research-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .research-card .icon {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .research-card p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        /* ---- Timeline (Experience) ---- */
-        #experience {
-            background: var(--bg);
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2.5rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2.5rem;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -2.5rem;
-            top: 6px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg);
-            border: 3px solid var(--accent);
-            z-index: 1;
-        }
-
-        .timeline-item:first-child .timeline-dot {
-            background: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-subtle);
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            transition: all var(--transition);
-        }
-
-        .timeline-content:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .timeline-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .timeline-role {
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .timeline-company {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .timeline-date {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background: var(--accent-subtle);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .timeline-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .timeline-desc ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .timeline-desc li {
-            padding-left: 1.25rem;
-            position: relative;
-            margin-bottom: 0.35rem;
-        }
-
-        .timeline-desc li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.6em;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-light);
-        }
-
-        .timeline-badge {
-            display: inline-block;
-            margin-top: 0.75rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: #fff;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* ---- Publications ---- */
-        #publications {
-            background: var(--bg-card);
-        }
-
-        [data-theme="dark"] #publications {
-            background: var(--bg-card);
-        }
-
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .pub-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            transition: all var(--transition);
-        }
-
-        .pub-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-1px);
-        }
-
-        .pub-venue {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            background: var(--accent-subtle);
-            padding: 0.2rem 0.65rem;
-            border-radius: 4px;
-            margin-bottom: 0.65rem;
-        }
-
-        .pub-title {
-            font-size: 1.02rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            line-height: 1.5;
-        }
-
-        .pub-authors {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .pub-authors strong {
+        /* Bio */
+        .bio {
+            font-size: 0.93rem;
             color: var(--text);
-        }
-
-        .pub-detail {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        /* ---- Contact ---- */
-        #contact {
-            background: var(--bg);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.75;
             margin-bottom: 2rem;
         }
 
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
+        .bio strong { font-weight: 600; }
+
+        /* Sections */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2rem 0;
         }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 0.95rem;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            transition: all var(--transition);
-        }
-
-        .contact-link:hover {
-            border-color: var(--accent);
-            background: var(--accent-subtle);
-            color: var(--accent);
-        }
-
-        .contact-link svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-        }
-
-        .contact-form h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group {
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.35rem;
-            color: var(--text-secondary);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.65rem 0.85rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--bg);
-            color: var(--text);
-            font-family: inherit;
+        /* News */
+        .news-list {
+            list-style: none;
             font-size: 0.9rem;
-            transition: border var(--transition);
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
+        .news-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* ---- Footer ---- */
-        footer {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
+        .news-date {
+            font-weight: 600;
+            color: var(--text-light);
             font-size: 0.85rem;
         }
 
-        /* ---- Scroll animations ---- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* Publications */
+        .pub {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .pub:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 0.93rem;
+            margin-bottom: 0.2rem;
         }
 
-        /* ---- Mobile ---- */
-        @media (max-width: 900px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .pub-authors strong { color: var(--text); font-weight: 600; }
+
+        .pub-venue {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .pub-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            background: var(--tag-bg);
+            color: var(--link);
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-right: 0.35rem;
+        }
+
+        /* Experience */
+        .exp {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .exp-role {
+            font-weight: 600;
+        }
+
+        .exp-org {
+            color: var(--link);
+        }
+
+        .exp-date {
+            color: var(--text-light);
+            font-size: 0.82rem;
+        }
+
+        .exp-details {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Talks */
+        .talk {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column-reverse;
+                align-items: center;
                 text-align: center;
             }
-            .hero-text { order: 2; }
-            .hero-visual { order: 1; }
-            .hero-narrative { margin-left: auto; margin-right: auto; }
-            .hero-tags { justify-content: center; }
-            .hero-cta { justify-content: center; }
-            .hero-avatar-wrapper { width: 240px; height: 240px; }
-            .hero-avatar { font-size: 5rem; }
-            .floating-badge { display: none; }
-            .journey-grid { grid-template-columns: 1fr; }
-            .research-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: var(--bg-card);
-                border-bottom: 1px solid var(--border);
-                padding: 1rem;
-                box-shadow: var(--shadow-md);
-            }
-            .mobile-menu-btn { display: block; }
-        }
-
-        @media (max-width: 480px) {
-            section { padding: 3.5rem 1.25rem; }
-            .nav-inner { padding: 0 1.25rem; }
-            .hero { padding: 5rem 1.25rem 3rem; }
-            .timeline { padding-left: 2rem; }
-            .timeline-dot { left: -2rem; }
+            .social-links { justify-content: center; }
+            .headshot { width: 130px; height: 130px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">Sukrati Gautam</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div style="display:flex;align-items:center;gap:0.25rem;">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 7.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                    <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
-                </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 7.66l-.71-.71M4.05 4.05l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+    </button>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-text">
+                <h1>Sukrati Gautam</h1>
+                <p class="affiliation">Applied Scientist at Amazon · PhD Candidate, Purdue University</p>
+                <p class="email"><a href="mailto:gautam11@purdue.edu">gautam11@purdue.edu</a></p>
+                <div class="social-links">
+                    <a href="https://scholar.google.com/citations?user=rPTWVD0AAAAJ&hl=en" target="_blank">Google Scholar</a>
+                    <a href="https://linkedin.com/in/sukratii/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/sukratii" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="headshot">
+                <img src="headshot.jpg" alt="Sukrati Gautam">
             </div>
         </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <h1>
-                    Hi, I'm <span class="gradient-text">Sukrati Gautam</span>
-                </h1>
-                <p class="hero-subtitle">
-                    PhD Candidate, Purdue University &middot; AI Alignment &amp; Safety
-                </p>
-                <p class="hero-narrative">
-                    I started my PhD modeling <strong>how humans make collective decisions about shared resources</strong>&mdash;and ended up asking a bigger question: <strong>how do we make AI systems that align with human values?</strong> From behavioral economics to agentic AI evaluation, my path has been about understanding decision-making at every scale&mdash;and now applying that lens to the most critical challenge in AI.
-                </p>
-                <div class="hero-tags">
-                    <span>AI Alignment</span>
-                    <span>Agentic Safety</span>
-                    <span>LLM Evaluation</span>
-                    <span>Cognitive Science</span>
-                    <span>Behavioral AI</span>
-                </div>
-                <div class="hero-cta">
-                    <a href="#research" class="btn btn-primary">Explore My Research</a>
-                    <a href="#experience" class="btn btn-outline">View Experience</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-avatar-wrapper">
-                    <div class="hero-avatar"><img src="headshot.jpg" alt="Sukrati - AI Safety Researcher"></div>
-                    <div class="hero-avatar-ring"></div>
-                    <div class="floating-badge">NeurIPS 2025 &middot; ICLR 2026</div>
-                    <div class="floating-badge">Amazon Science</div>
-                    <div class="floating-badge">IIT Delhi &rarr; Purdue PhD</div>
-                </div>
-            </div>
+        <!-- Bio -->
+        <div class="bio">
+            I study how AI systems make decisions&mdash;and whether those decisions truly align with human values. My research began with modeling how humans navigate collective decisions under uncertainty, but as AI models approach human-level intelligence, I pivoted to the question that now drives my work: how do we evaluate and align these systems before they act autonomously? Today, I develop behavioral evaluations for LLM agents, drawing on cognitive science and social psychology to test whether AI agents are genuinely capable or merely gaming their evaluations.
         </div>
-    </section>
 
-    <!-- About / Journey -->
-    <section id="about">
-        <div class="section-inner">
-            <p class="section-label">My Journey</p>
-            <h2 class="section-title">From Behavioral Science to AI Safety</h2>
-            <p class="section-desc">
-                I am passionate about AI alignment and evaluation. As models approach human-level intelligence, the growing field merges with behavioral science. I am particularly interested in surfacing LLM behavioral artifacts and applying pragmatic approaches to overcome critical challenges of AI alignment and post-training safety. My interdisciplinary studies in cognitive science help me build strong intuitions and bring fresh perspectives.
-            </p>
-            <div class="journey-grid fade-in">
-                <div class="journey-card">
-                    <div class="card-icon">&#127891;</div>
-                    <h3>Engineering Foundations</h3>
-                    <p>Graduated from <strong>IIT Delhi</strong> (B.Tech, GPA: 8.36/10) with rigorous training in linear algebra, optimization, probability, and econometrics&mdash;skills that now power my AI research.</p>
-                </div>
-                <div class="journey-card">
-                    <div class="card-icon">&#127758;</div>
-                    <h3>Human Decision Modeling</h3>
-                    <p>At Purdue, I studied <strong>how humans make collective decisions under uncertainty</strong>&mdash;modeling social dilemmas and anticipatory behavior in safety-critical systems. This became the intellectual bridge to AI alignment.</p>
-                </div>
-                <div class="journey-card">
-                    <div class="card-icon">&#129302;</div>
-                    <h3>Pivot to AI Safety</h3>
-                    <p>At <strong>Amazon Science</strong>, I built agentic AI systems and co-developed evaluation frameworks for AI alignment&mdash;now adopted org-wide. Presented a live demo at <strong>NeurIPS 2025</strong> and submitted to <strong>ICLR 2026</strong>.</p>
-                </div>
-                <div class="journey-card">
-                    <div class="card-icon">&#128300;</div>
-                    <h3>Where I Am Now</h3>
-                    <p>Adapting behavioral economics and social psychology experiments to evaluate whether <strong>LLM agents have prosocial or antisocial goals</strong>&mdash;and whether they fake alignment. Building a social science benchmark for model behavior.</p>
-                </div>
-            </div>
+        <hr>
+
+        <!-- News -->
+        <h2>News</h2>
+        <ul class="news-list">
+            <li><span class="news-date">[01/2026]</span> Paper submitted to <strong>ICLR 2026</strong> &mdash; "Measuring Capability vs. Compliance in Evaluation Aware Software Engineering Agents" (Agents in the Wild workshop)</li>
+            <li><span class="news-date">[12/2025]</span> Presented live demo at <strong>NeurIPS 2025</strong> Amazon Demo Booth &mdash; "Are We Just Scratching the Surface of AI Evaluation for Agentic Systems?"</li>
+            <li><span class="news-date">[08/2025]</span> Joined <strong>Amazon, Creator's Science Team</strong> (New York, NY) as Applied Scientist</li>
+            <li><span class="news-date">[06/2025]</span> Paper published in <strong>Water Resources Research</strong> &mdash; "Modeling Human Decision Heuristics and Anticipatory Behavior in Safety-Critical Systems Under Uncertainty"</li>
+            <li><span class="news-date">[06/2024]</span> Presented at <strong>ASEE 2024</strong> &mdash; "Empowering Students and Strengthening Community Relationships"</li>
+            <li><span class="news-date">[04/2024]</span> Presented at <strong>EGU General Assembly 2024</strong> &mdash; "Enhancing Resilience in Human&ndash;Infrastructure Systems Using NLP and AI Frameworks"</li>
+            <li><span class="news-date">[01/2024]</span> Joined <strong>Bayer, Crop Science R&amp;D</strong> (Creve Coeur, MO) as Applied Scientist</li>
+            <li><span class="news-date">[08/2023]</span> Started role as Data Scientist Researcher at <strong>Microsoft &times; The Data Mine, Purdue</strong></li>
+            <li><span class="news-date">[03/2023]</span> Invited Keynote Speaker at <strong>MOIPA Spring Reception 2023</strong></li>
+        </ul>
+
+        <hr>
+
+        <!-- Publications -->
+        <h2>Publications</h2>
+
+        <div class="pub">
+            <p class="pub-title">Measuring Capability vs. Compliance in Evaluation Aware Software Engineering Agents</p>
+            <p class="pub-authors"><strong>Gautam, S.</strong>, Grover, P., Bhaduri, S., Grigoryan, H., Tabassum, A., Bagde, A.</p>
+            <p class="pub-venue"><span class="pub-tag">ICLR 2026</span> Agents in the Wild: Safety, Security, and Beyond</p>
         </div>
-    </section>
 
-    <!-- Research -->
-    <section id="research">
-        <div class="section-inner">
-            <p class="section-label">Research</p>
-            <h2 class="section-title">What I Work On</h2>
-            <p class="section-desc">
-                My research sits at the intersection of behavioral science and AI safety. I surface LLM behavioral artifacts using controlled experiments from social psychology, and develop evaluation frameworks for agentic systems deployed in high-stakes environments.
-            </p>
-            <div class="research-grid fade-in">
-                <div class="research-card">
-                    <div class="icon">&#128737;&#65039;</div>
-                    <h3>Agentic AI Evaluation</h3>
-                    <p>Developing evaluation-awareness metrics for autonomous LLM agents. Co-developed novel evaluation frameworks for agentic AI alignment at Amazon Science, now adopted org-wide. Live demo at NeurIPS 2025.</p>
-                </div>
-                <div class="research-card">
-                    <div class="icon">&#129504;</div>
-                    <h3>LLM Behavioral Benchmarking</h3>
-                    <p>Designing controlled LLM agent evaluations using established behavioral economics and social psychology experiments. Building a social science benchmark comparing model behavior against human experimental data.</p>
-                </div>
-                <div class="research-card">
-                    <div class="icon">&#128737;&#65039;</div>
-                    <h3>Capability vs. Compliance</h3>
-                    <p>Measuring whether AI agents are genuinely capable or merely gaming evaluations. Research on evaluation-aware software engineering agents (ICLR 2026, Agents in the Wild workshop).</p>
-                </div>
-                <div class="research-card">
-                    <div class="icon">&#9878;&#65039;</div>
-                    <h3>Human Decision Heuristics</h3>
-                    <p>Modeling anticipatory human behavior in safety-critical systems under uncertainty. Published in Water Resources Research (2025), applying decision heuristics to understand how humans and AI navigate risk.</p>
-                </div>
-                <div class="research-card">
-                    <div class="icon">&#128202;</div>
-                    <h3>Applied ML &amp; NLP</h3>
-                    <p>Domain-augmented knowledge graphs with transformer-based entity recognition. LLM fine-tuning (LongLoRA) achieving 88% F1. LSTM forecasting pipelines and RAG-enhanced explanation systems deployed in production.</p>
-                </div>
-                <div class="research-card">
-                    <div class="icon">&#128101;</div>
-                    <h3>AI Alignment via Cognitive Science</h3>
-                    <p>Applying cognitive science theories to AI alignment. Evaluating whether LLM agents exhibit prosocial or antisocial goals, and whether they fake alignment in social scenarios&mdash;a behavioral-level safety layer.</p>
-                </div>
-            </div>
+        <div class="pub">
+            <p class="pub-title">Modeling Human Decision Heuristics and Anticipatory Behavior in Safety-Critical Systems Under Uncertainty</p>
+            <p class="pub-authors"><strong>Gautam, S.</strong>, Park, S., Yu, D. J., Garcia, M., Sivapalan, M., Shin, H. C.</p>
+            <p class="pub-venue"><span class="pub-tag">WRR 2025</span> Water Resources Research</p>
         </div>
-    </section>
 
-    <!-- Experience -->
-    <section id="experience">
-        <div class="section-inner">
-            <p class="section-label">Experience</p>
-            <h2 class="section-title">Where I've Worked</h2>
-            <p class="section-desc">
-                Each role has deepened my understanding of how intelligent systems&mdash;human and artificial&mdash;make decisions, and how to make those decisions safer.
-            </p>
-            <div class="timeline fade-in">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-role">Applied Scientist &middot; <span class="timeline-company">Amazon, Creator's Science Team</span></div>
-                                <div style="font-size:0.85rem;color:var(--text-secondary);">New York, NY</div>
-                            </div>
-                            <span class="timeline-date">Aug 2025 &ndash; Dec 2025</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <ul>
-                                <li>Engineered &amp; deployed agentic AI architecture with dynamic, context-aware tool orchestration, transforming the most revenue-critical Ads workflow into an autonomous decision system</li>
-                                <li>Delivered 98% accuracy and throughput, reducing compensation deal execution from <strong>5 hours to 5 minutes</strong></li>
-                                <li>Co-developed novel evaluation frameworks for agentic AI alignment, now adopted org-wide</li>
-                                <li>Presented at NYRL Conference, Amazon ML Conference (AMLC), and <strong>live demo at NeurIPS 2025</strong></li>
-                                <li>Developed evaluation-awareness metrics for autonomous LLM coding agents (submitted to ICLR 2026)</li>
-                            </ul>
-                        </div>
-                        <span class="timeline-badge">NeurIPS 2025</span>
-                        <span class="timeline-badge" style="margin-left:0.5rem;">ICLR 2026</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-role">Applied Scientist &middot; <span class="timeline-company">Bayer, Crop Science R&amp;D</span></div>
-                                <div style="font-size:0.85rem;color:var(--text-secondary);">Creve Coeur, MO</div>
-                            </div>
-                            <span class="timeline-date">Jan 2024 &ndash; Aug 2024</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <ul>
-                                <li>Architected &amp; deployed LSTM-based forecasting pipeline on AWS Lambda for real-time chemical stream prediction (92% accuracy, &lt;200ms latency)</li>
-                                <li>Engineered RAG-enhanced model drift explanation system correlating anomaly predictions with 5k SOPs</li>
-                                <li>Achieved <strong>$500K annual cost-saving opportunity</strong> by preventing downtime &amp; increasing production throughput</li>
-                                <li>Presented at annual Bayer Innovation conference; received <strong>Authors &amp; Innovators Award</strong>; filed digital patent</li>
-                            </ul>
-                        </div>
-                        <span class="timeline-badge">Authors &amp; Innovators Award</span>
-                        <span class="timeline-badge" style="margin-left:0.5rem;">Digital Patent</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-role">Data Scientist Researcher &middot; <span class="timeline-company">Microsoft, The Data Mine Purdue</span></div>
-                                <div style="font-size:0.85rem;color:var(--text-secondary);">West Lafayette, IN</div>
-                            </div>
-                            <span class="timeline-date">Aug 2023 &ndash; Dec 2023</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <ul>
-                                <li>Built multi-platform social analytics pipeline ingesting 1M+ Minecraft user interactions daily via Reddit/X/Discord APIs</li>
-                                <li>Designed hierarchical topic modeling system (BERTopic + LDA) categorizing 1.2M comments into actionable themes</li>
-                                <li>Developed multilingual sentiment analysis using BERT Transformer (91% accuracy, F1=0.89 across 4 languages)</li>
-                                <li>Deployed anomaly detection correlating sentiment with game updates, informing patches that <strong>boosted player retention by 12%</strong></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-role">Graduate Research Assistant &middot; <span class="timeline-company">Purdue University</span></div>
-                                <div style="font-size:0.85rem;color:var(--text-secondary);">West Lafayette, IN &middot; Advisors: Dr. David J. Yu &amp; Dr. Yan Cong</div>
-                            </div>
-                            <span class="timeline-date">Aug 2021 &ndash; Present</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <ul>
-                                <li>Ph.D. in Interdisciplinary Engineering, Minor in Computer Science &amp; Cognitive Science (GPA: 3.91/4.0)</li>
-                                <li>Designing controlled LLM agent evaluations and building social science benchmarks for model behavior</li>
-                                <li>Framing behavioral-level evaluation layers for AI safety, alignment, and risk-aware agentic deployment</li>
-                                <li>Constructed domain-augmented knowledge graphs using transformer-based entity recognition for causal reasoning</li>
-                                <li>LLM fine-tuning (LongLoRA) on 12k domain-specific QA pairs, achieving 88% semantic similarity F1-score</li>
-                            </ul>
-                        </div>
-                        <span class="timeline-badge">Lynn Fellowship</span>
-                        <span class="timeline-badge" style="margin-left:0.5rem;">Outstanding Research Award</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <div class="timeline-role">B.Tech &middot; <span class="timeline-company">Indian Institute of Technology Delhi</span></div>
-                                <div style="font-size:0.85rem;color:var(--text-secondary);">New Delhi, India</div>
-                            </div>
-                            <span class="timeline-date">Aug 2017 &ndash; May 2021</span>
-                        </div>
-                        <div class="timeline-desc">
-                            <ul>
-                                <li>Bachelor of Technology (GPA: 8.36/10.00)</li>
-                                <li>Coursework: Linear Algebra, Probability &amp; Statistics, Multivariate Calculus, Optimization Techniques, Econometrics</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="pub">
+            <p class="pub-title">Enhancing Resilience in Human&ndash;Infrastructure Systems Using NLP and AI Frameworks</p>
+            <p class="pub-authors"><strong>Gautam, S.</strong>, Yu, D. J., Shin, H. C.</p>
+            <p class="pub-venue"><span class="pub-tag">EGU 2024</span> EGU General Assembly</p>
         </div>
-    </section>
 
-    <!-- Publications -->
-    <section id="publications">
-        <div class="section-inner">
-            <p class="section-label">Publications</p>
-            <h2 class="section-title">Selected Work</h2>
-            <p class="section-desc">
-                A selection of my research publications spanning AI safety, sociohydrological modeling, and applied machine learning.
-            </p>
-            <div class="pub-list fade-in">
-                <div class="pub-card">
-                    <span class="pub-venue">ICLR 2026</span>
-                    <h4 class="pub-title">Measuring Capability vs. Compliance in Evaluation Aware Software Engineering Agents</h4>
-                    <p class="pub-authors"><strong>Gautam, S.</strong>, Grover, P., Bhaduri, S., Grigoryan, H., Tabassum, A., Bagde, A.</p>
-                    <p class="pub-detail">ICLR, Agents in the Wild: Safety, Security, and Beyond (2026)</p>
-                </div>
-                <div class="pub-card">
-                    <span class="pub-venue">Water Resources Research 2025</span>
-                    <h4 class="pub-title">Modeling Human Decision Heuristics and Anticipatory Behavior in Safety-Critical Systems Under Uncertainty</h4>
-                    <p class="pub-authors"><strong>Gautam, S.</strong>, Park, S., Yu, D. J., Garcia, M., Sivapalan, M., Shin, H. C.</p>
-                    <p class="pub-detail">Water Resources Research (2025)</p>
-                </div>
-                <div class="pub-card">
-                    <span class="pub-venue">EGU 2024</span>
-                    <h4 class="pub-title">Enhancing Resilience in Human&ndash;Infrastructure Systems Using NLP and AI Frameworks</h4>
-                    <p class="pub-authors"><strong>Gautam, S.</strong>, Yu, D. J., Shin, H. C.</p>
-                    <p class="pub-detail">EGU General Assembly (2024)</p>
-                </div>
-            </div>
+        <p style="font-size:0.85rem;color:var(--text-light);margin-top:0.5rem;">
+            Full list on <a href="https://scholar.google.com/citations?user=rPTWVD0AAAAJ&hl=en" target="_blank">Google Scholar</a>
+        </p>
 
-            <h3 style="margin-top:3rem;margin-bottom:1.25rem;font-size:1.1rem;font-weight:600;">Invited Talks</h3>
-            <div class="pub-list">
-                <div class="pub-card">
-                    <span class="pub-venue">NeurIPS 2025</span>
-                    <h4 class="pub-title">&ldquo;Are We Just Scratching the Surface of AI Evaluation for Agentic Systems?&rdquo;</h4>
-                    <p class="pub-detail">Amazon Demo Booth, NeurIPS 2025</p>
-                </div>
-                <div class="pub-card">
-                    <span class="pub-venue">ASEE 2024</span>
-                    <h4 class="pub-title">Oral Presentation &mdash; Empowering Students and Strengthening Community Relationships</h4>
-                    <p class="pub-detail">American Society for Engineering Education (ASEE) 2024</p>
-                </div>
-                <div class="pub-card">
-                    <span class="pub-venue">MOIPA 2023</span>
-                    <h4 class="pub-title">Invited Keynote Speaker</h4>
-                    <p class="pub-detail">MOIPA Spring Reception 2023</p>
-                </div>
-            </div>
+        <hr>
 
-            <p style="margin-top:2rem;color:var(--text-secondary);font-size:0.9rem;font-style:italic;">
-                Full publication list available on <a href="https://scholar.google.com/citations?user=rPTWVD0AAAAJ&hl=en" style="color:var(--accent);" target="_blank">Google Scholar</a>
-            </p>
+        <!-- Invited Talks -->
+        <h2>Invited Talks</h2>
+
+        <div class="talk">
+            <span class="news-date">[12/2025]</span> "Are We Just Scratching the Surface of AI Evaluation for Agentic Systems?" &mdash; <strong>NeurIPS 2025</strong>, Amazon Demo Booth
         </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="section-inner">
-            <p class="section-label">Get in Touch</p>
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-desc">
-                I'm always excited to connect with fellow researchers, collaborators, and anyone interested in AI safety, alignment, or the intersection of cognitive science and AI. Feel free to reach out!
-            </p>
-            <div class="contact-grid fade-in">
-                <div class="contact-info">
-                    <p>Whether you're working on AI safety, interested in interdisciplinary research, or simply want to chat about the future of aligned AI&mdash;I'd love to hear from you.</p>
-                    <div class="contact-links">
-                        <a href="mailto:gautam11@purdue.edu" class="contact-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            gautam11@purdue.edu
-                        </a>
-                        <a href="https://linkedin.com/in/sukratii/" class="contact-link" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 00-12 0v1a4 4 0 004 4h4a4 4 0 004-4V8zM12 14v4m-2 2h4"/></svg>
-                            linkedin.com/in/sukratii
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=rPTWVD0AAAAJ&hl=en" class="contact-link" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-                            Google Scholar
-                        </a>
-                        <a href="#" class="contact-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="What would you like to discuss?" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
-                    </form>
-                </div>
-            </div>
+        <div class="talk">
+            <span class="news-date">[06/2024]</span> Oral Presentation &mdash; <strong>ASEE 2024</strong>, Empowering Students and Strengthening Community Relationships
         </div>
-    </section>
+        <div class="talk">
+            <span class="news-date">[03/2023]</span> Invited Keynote Speaker &mdash; <strong>MOIPA Spring Reception 2023</strong>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Sukrati Gautam. Built with curiosity, from behavioral science to AI safety.</p>
-    </footer>
+        <hr>
+
+        <!-- Experience -->
+        <h2>Experience</h2>
+
+        <div class="exp">
+            <p><span class="exp-role">Applied Scientist</span> &middot; <span class="exp-org">Amazon, Creator's Science Team</span> <span class="exp-date">&mdash; Aug 2025 &ndash; Dec 2025, New York, NY</span></p>
+            <p class="exp-details">Engineered agentic AI architecture with dynamic tool orchestration. Delivered 98% accuracy, reducing deal execution from 5 hours to 5 minutes. Co-developed evaluation frameworks for agentic AI alignment, adopted org-wide. Live demo at NeurIPS 2025.</p>
+        </div>
+
+        <div class="exp">
+            <p><span class="exp-role">Applied Scientist</span> &middot; <span class="exp-org">Bayer, Crop Science R&amp;D</span> <span class="exp-date">&mdash; Jan 2024 &ndash; Aug 2024, Creve Coeur, MO</span></p>
+            <p class="exp-details">LSTM-based forecasting on AWS Lambda (92% accuracy, &lt;200ms latency). RAG-enhanced model drift explanation system. $500K annual cost-saving opportunity. Authors &amp; Innovators Award; digital patent filed.</p>
+        </div>
+
+        <div class="exp">
+            <p><span class="exp-role">Data Scientist Researcher</span> &middot; <span class="exp-org">Microsoft &times; The Data Mine, Purdue</span> <span class="exp-date">&mdash; Aug 2023 &ndash; Dec 2023, West Lafayette, IN</span></p>
+            <p class="exp-details">Multi-platform social analytics pipeline (1M+ daily interactions). Hierarchical topic modeling (BERTopic + LDA) on 1.2M comments. Multilingual sentiment analysis using BERT (91% accuracy). Boosted player retention by 12%.</p>
+        </div>
+
+        <div class="exp">
+            <p><span class="exp-role">Graduate Research Assistant</span> &middot; <span class="exp-org">Purdue University</span> <span class="exp-date">&mdash; Aug 2021 &ndash; Present, West Lafayette, IN</span></p>
+            <p class="exp-details">PhD in Interdisciplinary Engineering, Minor in CS &amp; Cognitive Science (GPA: 3.91/4.0). Designing controlled LLM agent evaluations. Building social science benchmarks for model behavior. Lynn Fellowship &amp; Outstanding Research Award.</p>
+        </div>
+
+        <div class="exp">
+            <p><span class="exp-role">B.Tech</span> &middot; <span class="exp-org">Indian Institute of Technology Delhi</span> <span class="exp-date">&mdash; Aug 2017 &ndash; May 2021, New Delhi</span></p>
+            <p class="exp-details">GPA: 8.36/10. Coursework: Linear Algebra, Probability &amp; Statistics, Optimization, Econometrics.</p>
+        </div>
+
+        <footer>
+            &copy; 2025 Sukrati Gautam
+        </footer>
+    </div>
 
     <script>
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
-        const html = document.documentElement;
+        const toggle = document.getElementById('themeToggle');
+        const sun = document.getElementById('sunIcon');
+        const moon = document.getElementById('moonIcon');
+        const root = document.documentElement;
 
         function setTheme(dark) {
-            html.setAttribute('data-theme', dark ? 'dark' : 'light');
-            sunIcon.style.display = dark ? 'none' : 'block';
-            moonIcon.style.display = dark ? 'block' : 'none';
+            root.setAttribute('data-theme', dark ? 'dark' : 'light');
+            sun.style.display = dark ? 'none' : 'block';
+            moon.style.display = dark ? 'block' : 'none';
             localStorage.setItem('theme', dark ? 'dark' : 'light');
         }
 
-        // Initialize theme
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+        const saved = localStorage.getItem('theme');
+        setTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-        themeToggle.addEventListener('click', () => {
-            const isDark = html.getAttribute('data-theme') === 'dark';
-            setTheme(!isDark);
-        });
-
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        // Close mobile menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-        });
-
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navAnchors = document.querySelectorAll('.nav-links a');
-
-        function updateActiveNav() {
-            const scrollY = window.scrollY + 100;
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const height = section.offsetHeight;
-                const id = section.getAttribute('id');
-                if (scrollY >= top && scrollY < top + height) {
-                    navAnchors.forEach(a => {
-                        a.classList.remove('active');
-                        if (a.getAttribute('href') === '#' + id) {
-                            a.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNav, { passive: true });
-        updateActiveNav();
-
-        // Scroll-triggered fade-in
-        const fadeEls = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        fadeEls.forEach(el => observer.observe(el));
-
-        // Contact form (static handler)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'Message Sent!';
-            btn.style.background = '#16a34a';
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                this.reset();
-            }, 2500);
+        toggle.addEventListener('click', () => {
+            setTheme(root.getAttribute('data-theme') !== 'dark');
         });
     </script>
 </body>
