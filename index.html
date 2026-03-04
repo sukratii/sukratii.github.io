@@ -332,6 +332,13 @@
             align-items: center;
         }
 
+        /* ── Global overflow protection ── */
+        body { overflow-x: hidden; }
+        .pub-title, .pub-authors, .pub-venue, .about-me, .research-text, .news-list, .talk {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
         /* ── Mobile ── */
         @media (max-width: 680px) {
             .layout { flex-direction: column; }
@@ -347,12 +354,32 @@
                 border-bottom: 1px solid var(--border);
             }
 
-            .sidebar-nav { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
+            .headshot { width: 120px; height: 120px; }
+
+            .sidebar-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
             .sidebar-nav li { margin-bottom: 0; }
+            .sidebar-nav a { padding: 0.45rem 0.65rem; font-size: 0.9rem; }
+
             .social-links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .social-links a { justify-content: center; }
-            .theme-toggle { margin: 0.5rem auto 0; }
+            .social-links a { justify-content: center; min-width: 44px; min-height: 44px; display: flex; align-items: center; }
+
+            /* Fix: override position:absolute so toggle stays in document flow */
+            .theme-toggle { position: static; margin: 0.75rem auto 0; }
+
             .main { padding: 1.5rem 1.25rem 2rem; max-width: 100%; }
+
+            .about-me, .research-text { font-size: 1rem; }
+            .pub-title { font-size: 1rem; }
+            .news-list, .news-list li, .talk { font-size: 1rem; }
+
+            footer { flex-direction: column; gap: 0.35rem; text-align: center; }
+        }
+
+        /* ── Extra-small screens (≤380px) ── */
+        @media (max-width: 380px) {
+            .sidebar { padding: 1.5rem 1rem 1.25rem; }
+            .main { padding: 1.25rem 1rem 2rem; }
+            .sidebar-nav a { padding: 0.4rem 0.5rem; font-size: 0.85rem; }
         }
     </style>
 </head>
