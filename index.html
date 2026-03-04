@@ -17,7 +17,7 @@
             --border: #e4e4e4;
             --tag-bg: #eef0f3;
             --sidebar-bg: #f3f4f6;
-            --sidebar-w: 240px;
+            --sidebar-w: 280px;
         }
 
         [data-theme="dark"] {
@@ -56,8 +56,9 @@
         .sidebar {
             width: var(--sidebar-w);
             flex-shrink: 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
             height: 100vh;
             padding: 2.5rem 1.75rem;
             display: flex;
@@ -67,6 +68,7 @@
             border-right: 1px solid var(--border);
             transition: background 0.3s;
         }
+
 
         .headshot {
             width: 140px;
@@ -85,21 +87,21 @@
         }
 
         .sidebar h1 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
             color: var(--text);
         }
 
         .sidebar .affiliation {
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             color: var(--text-light);
             line-height: 1.5;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .sidebar .email {
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             margin-bottom: 1.4rem;
         }
 
@@ -114,12 +116,12 @@
         }
 
         .sidebar-nav a {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: var(--text-light);
             transition: color 0.15s;
             display: block;
-            padding: 0.15rem 0;
+            padding: 0.2rem 0;
         }
 
         .sidebar-nav a:hover {
@@ -136,7 +138,7 @@
         }
 
         .social-links a {
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             color: var(--text-light);
             transition: color 0.15s;
             display: flex;
@@ -181,7 +183,7 @@
             flex: 1;
             padding: 2.5rem 3rem;
             min-width: 0;
-            max-width: 760px;
+            margin-left: var(--sidebar-w);
         }
 
         section {
@@ -195,7 +197,7 @@
         }
 
         h2 {
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -205,7 +207,7 @@
 
         /* ── About Me ── */
         .about-me {
-            font-size: 0.92rem;
+            font-size: 1rem;
             color: var(--text-light);
             line-height: 1.75;
             font-style: italic;
@@ -213,7 +215,7 @@
 
         /* ── Research Interest Journey ── */
         .research-text {
-            font-size: 0.92rem;
+            font-size: 1rem;
             color: var(--text);
             line-height: 1.8;
         }
@@ -221,7 +223,7 @@
         /* ── News ── */
         .news-list {
             list-style: none;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
         }
 
         .news-list li {
@@ -239,7 +241,7 @@
         /* ── Talks ── */
         .talk {
             margin-bottom: 0.8rem;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
@@ -254,14 +256,14 @@
 
         .pub-title {
             font-weight: 600;
-            font-size: 0.92rem;
+            font-size: 1rem;
             margin-bottom: 0.2rem;
             color: var(--text);
             line-height: 1.5;
         }
 
         .pub-authors {
-            font-size: 0.83rem;
+            font-size: 0.9rem;
             color: var(--text-light);
             margin-bottom: 0.18rem;
         }
@@ -269,7 +271,7 @@
         .pub-authors strong { color: var(--text); font-weight: 600; }
 
         .pub-venue {
-            font-size: 0.83rem;
+            font-size: 0.9rem;
             font-style: italic;
             color: var(--text-light);
         }
