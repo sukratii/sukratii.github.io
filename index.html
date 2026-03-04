@@ -183,7 +183,7 @@
         /* ── Main content ── */
         .main {
             flex: 1;
-            padding: 2.5rem 3rem;
+            padding: 4rem 3rem 2.5rem;
             min-width: 0;
             margin-left: var(--sidebar-w);
         }
@@ -210,9 +210,8 @@
         /* ── About Me ── */
         .about-me {
             font-size: 1.1rem;
-            color: var(--text-light);
+            color: var(--text);
             line-height: 1.75;
-            font-style: italic;
         }
 
         /* ── Research Interest Journey ── */
@@ -326,6 +325,9 @@
             border-top: 1px solid var(--border);
             color: var(--text-light);
             font-size: 0.78rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* ── Mobile ── */
@@ -368,7 +370,6 @@
 
         <ul class="sidebar-nav">
             <li><a href="#about">About Me</a></li>
-            <li><a href="#research">Research</a></li>
             <li><a href="#news">News</a></li>
             <li><a href="#talks">Talks</a></li>
             <li><a href="#publications">Publications</a></li>
@@ -411,17 +412,9 @@
         <!-- About Me -->
         <section id="about">
             <h2>About Me</h2>
-            <p class="about-me">[About Me &mdash; coming soon]</p>
-        </section>
+            <p class="about-me">I'm an AI Safety researcher passionate about building models that are not just capable, but trustworthy. I recently completed my PhD at Purdue University under <a href="https://davidjaehoonyu.wordpress.com/?_ga=2.43085667.712610105.1772587934-100783378.1771312543" target="_blank">Dr. David J. Yu</a> and <a href="https://www.cla.purdue.edu/directory/profiles/yan-cong.html" target="_blank">Dr. Yan Cong</a>, where my work sat at the intersection of machine learning, human decision-making, and system reliability. Before that, I earned my undergraduate degree from IIT Delhi under the mentorship of <a href="https://web.iitd.ac.in/~dhanya/" target="_blank">Dr. Dhanya C.T.</a>, and have had the opportunity to apply my research in industry through roles at Bayer R&amp;D and Amazon Science.</p>
 
-        <hr>
-
-        <!-- Research Interest Journey -->
-        <section id="research">
-            <h2>Research Interest Journey</h2>
-            <p class="research-text">
-                I study how AI systems make decisions, and whether those decisions truly align with human values. My research began with modeling how humans navigate collective decisions under uncertainty, but as AI models approach human-level intelligence, I pivoted to the question that now drives my work: how do we evaluate and align these systems before they act autonomously? Today, I develop behavioral evaluations for LLM agents, drawing on cognitive science and social psychology to test whether AI agents are genuinely capable or merely gaming their evaluations.
-            </p>
+            <p class="about-me" style="margin-top: 1rem;">I study how AI systems make decisions, and whether those decisions truly align with human values. My research began with modeling how humans navigate collective decisions under uncertainty, but as AI models approach human-level intelligence, I pivoted to the question that now drives my work: how do we evaluate and align these systems before they act autonomously? Today, I develop behavioral evaluations for LLM agents, drawing on cognitive science and social psychology to test whether AI agents are genuinely capable or merely gaming their evaluations.</p>
         </section>
 
         <hr>
@@ -546,7 +539,8 @@
         </section>
 
         <footer>
-            &copy; 2025 Sukrati Gautam
+            <span>Last updated: March 2026</span>
+            <span>&copy; 2026 Sukrati Gautam</span>
         </footer>
 
     </main>
